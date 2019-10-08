@@ -3,6 +3,11 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 const SALT_WORK_FACTOR = 10
+
+const MAX_LOGIN_ATTEMPTS=4
+
+const LOCK_TIME=1000*10*60*60
+
 const UserSchema = new mongoose.Schema({
 	username: String,
 	token: String,
@@ -67,9 +72,8 @@ UserSchema.methods = {
 			})
 		})
 	},
-	incLoginAttempts: function (user) {
+	incLoginAttempts: function () {
 		const that = this
-
 		return new Promise((resolve, reject) => {
 			if (that.lockUntil && that.lockUntil < Date.now()) {
 				that.update({

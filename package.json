@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node bin/www",
-    "dev": "./node_modules/.bin/nodemon start.js",
+    "start": "node  bin/www",
+    "dev": "./node_modules/.bin/nodemon  start.js ",
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "bcrypt": "^3.0.6",
     "debug": "^4.1.1",
     "ejs": "~2.3.3",

@@ -1,6 +1,7 @@
 # wykl_api
 模仿网易考拉前后台api
 
+本地需启动mongod服务
 # api
 
 ## Project setup

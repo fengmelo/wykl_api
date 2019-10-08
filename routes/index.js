@@ -6,6 +6,8 @@ import Slider from '../database/controllers/slider'
 import Upload from '../database/controllers/upload'
 import Config from '../database/controllers/config'
 import Product from '../database/controllers/product'
+import Group from '../database/controllers/group'
+import Node from '../database/controllers/node'
 
 import { verifyToken,verifyTokenFront } from '../auth/user'
 import { uploadMulter } from '../database/controllers/upload'
@@ -19,6 +21,20 @@ export default () => {
 	router.get('/user/info',verifyToken, User.info)
 	router.post('/user/login', User.login)
 	router.post('/user/logout', verifyToken, User.logout)
+	router.get('/user/list', verifyToken, User.list)
+	router.post('/user/add', verifyToken, User.add)
+	router.post('/user/edit', verifyToken, User.edit)
+
+	//用户组
+	router.get('/group/list',verifyToken, Group.list)
+	router.post('/group/add', verifyToken, Group.add)
+	router.post('/group/edit', verifyToken, Group.edit)
+
+	//结点
+	router.get('/node/list',verifyToken, Node.list)
+	router.get('/node/tree', verifyToken, Node.tree)
+	router.post('/node/add', verifyToken, Node.add)
+	router.post('/node/edit', verifyToken, Node.edit)
 
 	//前台用户
 	router.post('/fuser/login', Fuser.login)

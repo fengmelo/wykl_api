@@ -65,7 +65,6 @@ class Product {
 			page=1
 			limit=10000
 		}
-		console.log('order=',order)
 		let items = await ProductMod.find(where).skip((page - 1) * limit).limit(limit).populate({
 			path: 'user',
 			select: 'username'
